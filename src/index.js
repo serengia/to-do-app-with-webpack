@@ -88,8 +88,13 @@ todoContainer.addEventListener("click", (e) => {
 });
 
 clearListBtn.addEventListener("click", () => {
-  indexesToRemove.forEach((i) => {
-    deleteToDo(i);
-  });
-  populateList(getToDos());
+  if (indexesToRemove.length > 0) {
+    indexesToRemove.forEach((i) => {
+      deleteToDo(i);
+    });
+    populateList(getToDos());
+  }
+
+  // Reset indexesToRemove arr
+  indexesToRemove = [];
 });

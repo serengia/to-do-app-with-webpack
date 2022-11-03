@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://github.com/Serengia/to-do-app-with-webpack)
+[Live Demo Link](https://serengia.github.io/to-do-app-with-webpack/dist/)
 
 ## Getting Started
 
