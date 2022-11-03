@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export const checkoffItem = (todoListItem) => {
+const checkoffItem = (todoListItem) => {
   const todoListLi = todoListItem;
   const checkbox = todoListItem.querySelector(".checkbox");
   const input = todoListItem.querySelector(".item-description-input");
@@ -24,3 +23,5 @@ export const checkoffItem = (todoListItem) => {
 
   return indexesToRemove;
 };
+
+export default checkoffItem;
