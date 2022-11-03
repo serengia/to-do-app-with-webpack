@@ -1,11 +1,13 @@
 import getToDos, { addTodo, deleteToDo, updateTodo } from "./crud.js";
+import { checkoffItem } from "./interactiveList.js";
 import "./style.css";
 
 const todoContainer = document.querySelector(".todo-list");
+const clearListBtn = document.querySelector(".btn-clear");
 
 const itemMarkupGen = (data) => {
   return `<li class="todo" data-index="${data.index}" data-completed="${data.completed}"> 
-  <label for="${data.index}"> <i class="fa-regular fa-square"></i> </label>
+  <label for="${data.index}"> <input type="checkbox" class="checkbox"></label>
   <input type="text" id="${data.index}" class="item-description-input" name="${data.index}" value="${data.description}">
    <div class="fa-list-icon"><i
   class="fa-solid fa-ellipsis-vertical"></i></div> 
@@ -73,4 +75,21 @@ todoContainer.addEventListener("click", (e) => {
     deleteToDo(+index);
     populateList(getToDos());
   });
+});
+
+let indexesToRemove = [];
+
+todoContainer.addEventListener("click", (e) => {
+  const activeEl = e.target.closest(".checkbox");
+  if (!activeEl) return;
+  const parentEl = activeEl.closest(".todo");
+
+  indexesToRemove = checkoffItem(parentEl);
+});
+
+clearListBtn.addEventListener("click", () => {
+  indexesToRemove.forEach((i) => {
+    deleteToDo(i);
+  });
+  populateList(getToDos());
 });
